@@ -1,113 +1,83 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+    <div class="login-box">
+
+        <el-form :model="loginForm" :rules="fieldRules" ref="loginForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
+          <h3 class="title">系统登录</h3>
+          <el-form-item prop="account">
+            <el-input type="text" v-model="loginForm.account" auto-complete="off" placeholder="账号"></el-input>
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input type="password" v-model="loginForm.password" auto-complete="off" placeholder="密码"></el-input>
+          </el-form-item>
+          <!-- <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox> -->
+          <el-form-item style="width:100%;">
+            <el-button type="primary" style="width:48%;" @click.native.prevent="reset">重 置</el-button>
+            <el-button type="primary" style="width:48%;" @click.native.prevent="login" :loading="logining">登 录</el-button>
+          </el-form-item>
+        </el-form>
+
+    </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      logining: false,
+      loginForm: {
+        account: 'admin',
+        password: '123456'
+      },
+      fieldRules: {
+        account: [
+          {required: true, message: '请输入账号', trigger: 'blur'},
+        ],
+        password: [
+          {required: true, message: '请输入密码', trigger: 'blur'},
+        ]
+      },
+      checked: true
+    };
+  },
+  methods: {
+    login() {
+      let userInfo = {account: this.loginForm.account, password: this.loginForm.password}
+      this.$api.login(JSON.stringify(userInfo)).then((res) => {
+        Cookies.set('token', res.data.token) // 放置token到Cookie
+        sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
+        this.$router.push('/')  // 登录成功，跳转到主页
+      }).catch(function (res) {
+        alert(res);
+      });
+    },
+    reset() {
+      this.$refs.loginForm.resetFields();
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped lang="scss">
+  .login-container {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-clip: padding-box;
+    margin: 180px auto;
+    width: 350px;
+    padding: 35px 35px 15px 35px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 0 25px #cac6c6;
+    .title {
+      margin: 0px auto 40px auto;
+      text-align: center;
+      color: #505458;
+    }
+    .remember {
+      margin: 0px 0px 35px 0px;
+    }
+  }
 </style>
