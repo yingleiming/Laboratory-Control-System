@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-<!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
+    <Login></Login>
     <MainPanel></MainPanel>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Login from './components/Login.vue'
 import MainPanel from './components/MainPanel.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Login
     ,MainPanel
   }
 }
