@@ -1,20 +1,12 @@
 <template>
   <div id="app">
-    <Login></Login>
-    <MainPanel></MainPanel>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Login from './components/Login.vue'
-import MainPanel from './components/MainPanel.vue'
-
 export default {
   name: 'app',
-  components: {
-    Login
-    ,MainPanel
-  }
 }
 </script>
 

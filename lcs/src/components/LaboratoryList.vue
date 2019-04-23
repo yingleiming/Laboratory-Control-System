@@ -1,5 +1,7 @@
 <template>
-    
+    <div>
+      实验室列表页
+    </div>
 </template>
 
 <script>

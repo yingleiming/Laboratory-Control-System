@@ -45,22 +45,26 @@ export default {
   },
   methods: {
     login(loginForm) {
-      this.$refs[loginForm].validate((valid) => {
-        let account = this.loginForm.account;
-        let password = this.loginForm.password;
-        this.$axios.get('/login',{
-          account:account,
-          password:password
-        }).then(
-          (res)=>{
-            console.log(res);
-          }
-        ).catch(
-          (err)=>{
-            console.log(err);
-          }
-        )
-      })
+      this.$router.push({
+        path:"./",
+        name:"MainPanel",
+      });
+      // this.$refs[loginForm].validate((valid) => {
+      //   let account = this.loginForm.account;
+      //   let password = this.loginForm.password;
+      //   this.$axios.get('/login',{
+      //     account:account,
+      //     password:password
+      //   }).then(
+      //     (res)=>{
+      //       console.log(res);
+      //     }
+      //   ).catch(
+      //     (err)=>{
+      //       console.log(err);
+      //     }
+      //   )
+      // })
     },
     reset(loginForm) {
       this.$refs[loginForm].resetFields();
