@@ -7,7 +7,7 @@
               class="inline-input"
               v-model="state2"
               :fetch-suggestions="querySearch"
-              placeholder="请输入设备名称或实验室ID"
+              placeholder="请输入设备名称或设备ID"
               :trigger-on-focus="false"
               @select="handleSelect"
             ></el-autocomplete>
