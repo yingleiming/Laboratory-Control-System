@@ -140,6 +140,48 @@
             <el-button type="danger" @click="" size="mini">删除</el-button>
           </div>
         </el-col>
+        <el-col class="dev" :span="6">
+          <div>
+            <span>实验室名称：</span>
+            <span>1号实验室</span>
+          </div>
+          <div>
+            <span>当前状态：</span>
+            <span>可用</span>
+          </div>
+          <div class="handel">
+            <el-button type="primary" @click="" size="mini">修改</el-button>
+            <el-button type="danger" @click="" size="mini">删除</el-button>
+          </div>
+        </el-col>
+        <el-col class="dev" :span="6">
+          <div>
+            <span>实验室名称：</span>
+            <span>1号实验室</span>
+          </div>
+          <div>
+            <span>当前状态：</span>
+            <span>可用</span>
+          </div>
+          <div class="handel">
+            <el-button type="primary" @click="" size="mini">修改</el-button>
+            <el-button type="danger" @click="" size="mini">删除</el-button>
+          </div>
+        </el-col>
+        <el-col class="dev" :span="6">
+          <div>
+            <span>实验室名称：</span>
+            <span>1号实验室</span>
+          </div>
+          <div>
+            <span>当前状态：</span>
+            <span>可用</span>
+          </div>
+          <div class="handel">
+            <el-button type="primary" @click="" size="mini">修改</el-button>
+            <el-button type="danger" @click="" size="mini">删除</el-button>
+          </div>
+        </el-col>
       </el-row>
       <div >
         <el-button type="success" @click="" size="small">添加实验室</el-button>
