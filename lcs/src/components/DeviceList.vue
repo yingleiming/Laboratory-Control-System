@@ -5,11 +5,8 @@
           <el-col :span="24">
             <el-autocomplete
               class="inline-input"
-              v-model="state2"
-              :fetch-suggestions="querySearch"
               placeholder="请输入设备名称或设备ID"
               :trigger-on-focus="false"
-              @select="handleSelect"
             ></el-autocomplete>
           </el-col>
         </el-row>
@@ -259,7 +256,28 @@
 
 <script>
     export default {
-        name: "DeviceList"
+      name: "DeviceList",
+      data(){
+        return{
+
+        }
+      },
+      methods:{
+        getDeviceList(){
+          this.$axios.get("http://127.0.0.1:3000/lab/list",
+            {
+
+            }
+          ).then((response)=>{
+            console.log(response);
+          }).catch((error)=>{
+            console.log(error);
+          })
+        }
+      },
+      created() {
+        this.getDeviceList();
+      }
     }
 </script>
 

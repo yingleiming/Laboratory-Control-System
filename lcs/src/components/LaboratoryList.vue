@@ -5,11 +5,8 @@
         <el-col :span="24">
           <el-autocomplete
             class="inline-input"
-            v-model="state2"
-            :fetch-suggestions="querySearch"
             placeholder="请输入实验室名称"
             :trigger-on-focus="false"
-            @select="handleSelect"
           ></el-autocomplete>
         </el-col>
       </el-row>

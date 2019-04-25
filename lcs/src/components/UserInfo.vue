@@ -57,12 +57,15 @@
     export default {
       name: "UserInfo",
       data(){
+        return{
 
+        }
       },
       methods:{
-        // handel(){
-        //
-        // }
+
+      },
+      created() {
+
       }
     }
 </script>
